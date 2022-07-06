@@ -1,10 +1,21 @@
 import './App.css';
+import Home from './components/Home';
 import {Navbar, NavDropdown, Nav, Container, Form, FormControl, Button} from 'react-bootstrap';
 
 function App() {
+  const pages = 0;
+
+  const home = () => {
+    pages = 0;
+  }
+
+  const forums = () => {
+    pages = 1;
+  }
+
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="dark" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home">The CountDown</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -36,11 +47,16 @@ function App() {
             <Button variant="outline-success">Search</Button>
           </Form>
           <NavDropdown title="Profile" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Edit Account</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Create Account</NavDropdown.Item>
               </NavDropdown>
         </Container>
       </Navbar>
+      <div>
+        {
+          <Home></Home>
+        }
+      </div>
     </div>
   );
 }
