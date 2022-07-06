@@ -27,3 +27,7 @@ code {
 .titleUnderline{
   border-bottom: solid 1px black;
 }
+
+.color1{
+  background-color: grey;
+}
