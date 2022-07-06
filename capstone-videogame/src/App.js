@@ -53,6 +53,9 @@ function App() {
         </Container>
       </Navbar>
       <div>
+        if(pages == 0) {
+          
+        }
         {
           <Home></Home>
         }
