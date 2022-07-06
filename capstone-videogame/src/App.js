@@ -1,17 +1,45 @@
 import './App.css';
 import Home from './components/Home';
+import Forums from './components/Forums';
+import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 import {Navbar, NavDropdown, Nav, Container, Form, FormControl, Button} from 'react-bootstrap';
+import { useState } from 'react';
 
 function App() {
-  const pages = 0;
+const [pages, setPages] = useState(0);
 
-  const home = () => {
-    pages = 0;
-  }
+const home = () => {
+  setPages(0);
+}
 
-  const forums = () => {
-    pages = 1;
+const forums = () => {
+  setPages(1);
+}
+
+const profile = () => {
+  setPages(2);
+}
+
+const signUp = () => {
+  setPages(3);
+}
+
+function Pages(){
+
+  if(pages === 0){
+    return <Home></Home>
   }
+  else if(pages === 1){
+    return <Forums></Forums>
+  }
+  else if(pages === 2){
+    return <Profile></Profile>
+  }
+  else if(pages === 3){
+    return <SignUp></SignUp>
+  }
+}
 
   return (
     <div className="App">
@@ -21,7 +49,7 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link onClick={() => home()}>Home</Nav.Link>
               <NavDropdown title="Categories" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Action-Adventure</NavDropdown.Item>
@@ -33,7 +61,7 @@ function App() {
                 <NavDropdown.Item href="#action/3.3">Puzzle</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Idle</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link">Forums</Nav.Link>
+              <Nav.Link onClick={() => forums()}>Forums</Nav.Link>
             </Nav>
           </Navbar.Collapse>
 
@@ -47,17 +75,14 @@ function App() {
             <Button variant="outline-success">Search</Button>
           </Form>
           <NavDropdown title="Profile" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Create Account</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => profile()}>Login</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => signUp()}>Create Account</NavDropdown.Item>
               </NavDropdown>
         </Container>
       </Navbar>
       <div>
-        if(pages == 0) {
-          
-        }
         {
-          <Home></Home>
+          Pages()
         }
       </div>
     </div>

@@ -1,26 +1,14 @@
 import React from "react";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Form, Button, Container, Col, Row } from "react-bootstrap";
 
-const Profile = () => {
+const SignUp = () => {
     return (
-        <Container>
+        <><Container className="boxBorder">
             <Row>
                 <Col>
                     <Row>
                         <div>
-                            This Where Pic Go
-                        </div>
-                    </Row>
-                    <Row>
-                        <div>
-                            Username
-                        </div>
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        <div>
-                            <h3>Edit Profile</h3>
+                            <h3>Create Account</h3>
                         </div>
                     </Row>
                     <Row>
@@ -51,18 +39,41 @@ const Profile = () => {
                             </Form.Group>
 
                             <Button variant="primary" type="submit" className="button">
-                                Update Account
-                            </Button>
-                            <Button variant="primary" type="submit" className="button">
-                                Delete Account
+                                Create Account
                             </Button>
                         </Form>
                     </Row>
-                    
                 </Col>
             </Row>
         </Container>
+        <Container>
+                <Row>
+                    <Col>
+                        <Row>
+                            <div>
+                                <h3>Login</h3>
+                            </div>
+                        </Row>
+                        <Row>
+                            <Form.Group className="mb-3" controlId="Username">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="email" placeholder="Enter username" />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit" className="button">
+                                Login
+                            </Button>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 }
 
-export default Profile
+export default SignUp
