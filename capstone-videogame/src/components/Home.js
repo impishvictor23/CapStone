@@ -1,7 +1,7 @@
 import React from "react";
 import {Container, Col, Row} from 'react-bootstrap';
 
-const Home = ({}) => {
+const Home = ({games}) => {
     return (
         <Container>
             <Row>
@@ -12,6 +12,13 @@ const Home = ({}) => {
             <Row>
                 <Col>
                     <div className="boxBorder">Games</div>
+                    {
+                        games?.map((game) => (
+                            <div>
+                                <h4>{game.name}</h4>
+                            </div>
+                        ))
+                    }
                 </Col>
                 <Col>
                     <div className="boxBorder">Forums</div>

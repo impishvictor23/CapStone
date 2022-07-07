@@ -4,10 +4,12 @@ import Forums from './components/Forums';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import {Navbar, NavDropdown, Nav, Container, Form, FormControl, Button} from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 const [pages, setPages] = useState(0);
+const [games, setGames] = useState([]);
+const [filteredGames, setFilteredGames] = useState([]);
 
 const home = () => {
   setPages(0);
@@ -28,7 +30,7 @@ const signUp = () => {
 function Pages(){
 
   if(pages === 0){
-    return <Home></Home>
+    return <Home games={games} list = {filteredGames}></Home>
   }
   else if(pages === 1){
     return <Forums></Forums>
@@ -40,6 +42,20 @@ function Pages(){
     return <SignUp></SignUp>
   }
 }
+
+const getData = () => {
+  var url = "https://api.rawg.io/api/games?key=68b518954afe4f0f85f3f60b808aa197&dates=2019-09-01,2019-09-30&platforms=18,1,7";
+  fetch(url)
+  .then(r => r.json(0))
+  .then(data => {
+    setGames(data.results);
+    setFilteredGames(data.results);
+  }).catch(e => console.log(e));
+}
+
+useEffect(() => {
+  getData();
+}, [])
 
   return (
     <div className="App">
