@@ -11,17 +11,24 @@ const Home = ({games}) => {
             </Row>
             <Row>
                 <Col>
-                    <div className="boxBorder">Games</div>
+                    <div className="titleUnderline">Games</div>
                     {
-                        games?.map((game) => (
-                            <div>
-                                <h4>{game.name}</h4>
-                            </div>
+                        games?.sort((a, b) => a.rating > b.rating ? -1 : 1).map((game) => (
+                            <><div className="gameBorder">
+                                <div>
+                                    <img src={game.background_image} alt={game.name} className="images"></img>
+                                </div>
+                                <div className="gameContent">
+                                    <h4 className="titleUnderline">{game.name}</h4>
+                                    <h6>Rating: {game.rating}</h6>
+                                    <h6>Released: {game.released}</h6>
+                                </div>
+                            </div></>
                         ))
                     }
                 </Col>
                 <Col>
-                    <div className="boxBorder">Forums</div>
+                    <div className="titleUnderline">Forums</div>
                 </Col>
             </Row>
         </Container>

@@ -44,7 +44,8 @@ function Pages(){
 }
 
 const getData = () => {
-  var url = "https://api.rawg.io/api/games?key=68b518954afe4f0f85f3f60b808aa197&dates=2019-09-01,2019-09-30&platforms=18,1,7";
+  // var url = "https://api.rawg.io/api/games?key=68b518954afe4f0f85f3f60b808aa197&dates=2019-09-01,2019-09-30&platforms=18,1,7";
+  var url = "https://api.rawg.io/api/games?key=68b518954afe4f0f85f3f60b808aa197&dates=1990-09-01,2019-09-30&platforms=18,1,7"
   fetch(url)
   .then(r => r.json(0))
   .then(data => {
