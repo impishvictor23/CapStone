@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Forums from './components/Forums';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
+import Categories from './components/Categories';
 import {Navbar, NavDropdown, Nav, Container, Form, FormControl, Button} from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
@@ -10,6 +11,14 @@ function App() {
 const [pages, setPages] = useState(0);
 const [games, setGames] = useState([]);
 const [filteredGames, setFilteredGames] = useState([]);
+// const genreNames = [];
+const genreNames = games.genres.map(element => <li key={element}>{element.name}</li>)
+
+// games.genres.forEach((element) => {
+//   genreNames.push(<li>{element.name}</li>)
+// });
+
+console.log("Genres", genreNames)
 
 const home = () => {
   setPages(0);
@@ -27,10 +36,14 @@ const signUp = () => {
   setPages(3);
 }
 
+const categories = () => {
+  setPages(4);
+}
+
 function Pages(){
 
   if(pages === 0){
-    return <Home games={games} list = {filteredGames}></Home>
+    return <Home games={games}></Home>
   }
   else if(pages === 1){
     return <Forums></Forums>
@@ -40,6 +53,9 @@ function Pages(){
   }
   else if(pages === 3){
     return <SignUp></SignUp>
+  }
+  else if(pages === 4){
+    return <Categories games={games} list = {filteredGames}></Categories>
   }
 }
 
