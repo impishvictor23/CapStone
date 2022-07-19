@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router";
 
 const Profile = () => {
     return (
