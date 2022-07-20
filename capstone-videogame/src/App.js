@@ -3,8 +3,10 @@ import Home from './components/Home';
 import Forums from './components/Forums';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
+import RecordList from './components/recordList';
 import {Navbar, NavDropdown, Nav, Container, Form, FormControl, Button} from 'react-bootstrap';
 import { useState } from 'react';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 const [pages, setPages] = useState(0);
@@ -25,6 +27,10 @@ const signUp = () => {
   setPages(3);
 }
 
+const recordlist = () => {
+  setPages(4);
+}
+
 function Pages(){
 
   if(pages === 0){
@@ -34,10 +40,15 @@ function Pages(){
     return <Forums></Forums>
   }
   else if(pages === 2){
-    return <Profile></Profile>
+    return <Routes>
+    <Route path="/edit/:id" element={<Profile />} />
+  </Routes>
   }
   else if(pages === 3){
     return <SignUp></SignUp>
+  }
+  else if(pages === 4){
+    return <RecordList></RecordList>
   }
 }
 
@@ -62,6 +73,7 @@ function Pages(){
                 <NavDropdown.Item href="#action/3.4">Idle</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link onClick={() => forums()}>Forums</Nav.Link>
+              <Nav.Link onClick={() => recordlist()}>Users</Nav.Link>
             </Nav>
           </Navbar.Collapse>
 
